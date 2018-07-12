@@ -10,8 +10,9 @@ class AUser
         return true;
     }
 
-    public function login($)
+    public function changeIdentity($info)
     {
-
+        $_SESSION = $info;
+        $_SESSION['is_valid'] = 1;
     }
 }

@@ -26,7 +26,6 @@ class app
     //入口
     public function run()
     {
-
         $whole_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $info = parse_url($whole_url);
         $path = $info['path'];

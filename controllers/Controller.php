@@ -16,12 +16,15 @@ class Controller extends Yii
      */
     public function render($view, $data = [])
     {
+        //中间层
         $viewFile = SERVER_ROOT . '/html/' . $view . '.php';
         if (!file_exists($viewFile)) {
             throw new Exception("View '$view' does not exist.");
         }
 
         $output = $this->renderFile($viewFile, $data, true);
+
+        //包裹层
         if (!empty($this->layout)) {
             $layoutFile = SERVER_ROOT . '/html/' . $this->layout . '.php';
                 $output = $this->renderFile($layoutFile, ['content' => $output], true);
@@ -46,9 +49,4 @@ class Controller extends Yii
             require $viewFile;
         }
     }
-
-    public function isLogin(){
-
-    }
-
 }

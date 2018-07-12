@@ -1,5 +1,5 @@
 <?php
-$Array = ['framework', 'controllers',];
+$Array = ['framework', 'model', 'component', 'controllers',];
 
 //自动加载目录下所有的文件
 foreach ($Array as $dir)
