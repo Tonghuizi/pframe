@@ -24,9 +24,12 @@ class User extends AUser
         $stm->bindParam(':password', $this->password);
         if($stm->execute()){
             $res = $stm->fetchAll(PDO::FETCH_ASSOC);
-            $res = $res[0];
-            $this->changeIdentity($res);
-            return true;
+//            dump($res);
+            if($res && isset($res[0])){
+                $res = $res[0];
+                $this->changeIdentity($res);
+                return true;
+            }
         }
         return false;
     }

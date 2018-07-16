@@ -36,22 +36,16 @@ class homeController extends Controller
 
     public function login()
     {
-//        if(isset($_SESSION['is_valid']) && $_SESSION['is_valid']==1)
-//        {
-//            $this->render('home');
-//        }
-//        if (!empty($_POST)) {
-//            $obj = $_POST;
-//            $obj['is_valid'] = 1;
-//            Yii::app()->session->setCookie($obj);
-//        }
+        if(!Yii::app()->user->isGuest()){
+            Yii::app()->routes->redirect('/home/index');
+        }
         if (!empty($_POST)) {
 //            dump($_POST);
             $user = new User();
             $user->name = $_POST['name'];
             $user->password = $_POST['password'];
             if($user->login()){
-                $this->render('home');
+                Yii::app()->routes->redirect('/home/index');
             }
         }
 

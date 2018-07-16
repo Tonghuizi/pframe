@@ -10,6 +10,7 @@ class app
     public $pdo;
     public $routes;
     public $session;
+    public $user;
 
     function __construct($config)
     {
@@ -18,6 +19,7 @@ class app
         $this->redis = $db->redisConnect();
         $this->mysql = $db->mysqliConnect();
         $this->pdo = $db->PDOConnect();
+        $this->user = new AUser();
 
         $this->routes = new Routes($config['urlRules']);
         $this->session = new Session();

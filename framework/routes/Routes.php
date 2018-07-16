@@ -17,9 +17,11 @@ class Routes
     {
         $urlRules = $this->urlRules;
         //默认跳转页面
-        if ($path == '/') {
-            $this->urlDirect($urlRules['default']);
+        if ($path == '/' && $urlRules['default'] != '/') {
+            $path = $urlRules['default'];
+            $this->urlDirect($path);
         }
+
 
         $pathArr = explode('/', $path);
         //判断类是否存在（类名和文件名同）
@@ -35,9 +37,19 @@ class Routes
         if (!method_exists($instance, $actionName)) {
             $this->urlDirect($urlRules['404']);
         }
+
         $instance->$actionName();
         die;
     }
 
+    public function redirect($url, $statusCode = 302)
+    {
+        if(strpos($url, '/') === 0 && strpos($url, '//') !== 0){
+            $url = Yii::app()->config['baseUrl'].'/'.$url;
+        }
+
+        header('Location: /home/index', true, $statusCode);
+        die;
+    }
 
 }
