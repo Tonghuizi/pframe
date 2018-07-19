@@ -45,10 +45,10 @@ class Routes
     public function redirect($url, $statusCode = 302)
     {
         if(strpos($url, '/') === 0 && strpos($url, '//') !== 0){
-            $url = Yii::app()->config['baseUrl'].'/'.$url;
+            $url = Yii::app()->config['baseUrl'].$url;
         }
 
-        header('Location: /home/index', true, $statusCode);
+        header('Location: '.$url, true, $statusCode);
         die;
     }
 

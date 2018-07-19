@@ -23,7 +23,7 @@ class DB
             throw new \Exception("could not connect to the db:\n" . $mysqli->error);
         }
         return $mysqli;
-//        $res = $mysqli->query $sql);
+//        $res = $mysqli->query($sql);
 //        if (!$res) {
 //            throw new \Exception("sql error:\n" . $mysqli->error);
 //        }

@@ -15,4 +15,11 @@ class AUser
         $_SESSION = $info;
         $_SESSION['is_valid'] = 1;
     }
+
+    public function logout()
+    {
+        session_unset();
+        session_destroy();
+//        unset($_SESSION);
+    }
 }
